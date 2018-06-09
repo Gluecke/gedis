@@ -16,7 +16,7 @@ public class GedisAppConfig {
     @Bean
     JedisConnectionFactory jedisConnectionFactory() {
         final RedisConfig.Redis redis = redisConfig.getRedis();
-        final RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration(redis.getHost(), redis.getPort());
+        final RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration(System.getenv("REDIS_URL"), redis.getPort());
         return new JedisConnectionFactory(redisStandaloneConfiguration);
     }
 
