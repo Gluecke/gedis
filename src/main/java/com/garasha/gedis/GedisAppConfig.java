@@ -21,11 +21,11 @@ public class GedisAppConfig {
     JedisConnectionFactory jedisConnectionFactory() {
         final RedisConfig.Redis redis = redisConfig.getRedis();
         try {
-            final URI uri = new URI(System.getenv("REDIS_URL"));
+            final URI uri = new URI(redis.getUri());
             final RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration(uri.getHost(), uri.getPort());
-            String s = uri.getUserInfo().split(":", 2)[1];
-            RedisPassword password = RedisPassword.of(s);
-            redisStandaloneConfiguration.setPassword(password);
+            final String password = uri.getUserInfo().split(":", 2)[1];
+            final RedisPassword redisPassword = RedisPassword.of(password);
+            redisStandaloneConfiguration.setPassword(redisPassword);
         return new JedisConnectionFactory(redisStandaloneConfiguration);
         } catch (URISyntaxException e) {
             e.printStackTrace();

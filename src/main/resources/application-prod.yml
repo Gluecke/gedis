@@ -2,8 +2,7 @@ server:
     port: 8080
 
 redis:
-    host: redis://h:pa9b5b6cb2f5206b1996f2b9db7dc489cdf42d774b44a2df7d5752f7fa1454105@ec2-52-23-66-23.compute-1.amazonaws.com
-    port: 24449
+    uri: ${REDIS_URL}
 
 spring:
     profiles:

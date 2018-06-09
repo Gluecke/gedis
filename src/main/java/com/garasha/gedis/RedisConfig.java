@@ -13,7 +13,6 @@ public class RedisConfig {
     private Redis redis;
     @Data
     public static class Redis {
-        private String host;
-        private Integer port;
+        private String uri;
     }
 }
